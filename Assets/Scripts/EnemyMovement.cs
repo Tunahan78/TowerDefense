@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour , IUnitTarget
 {
    [SerializeField] private Transform[] waypoints;
    private int waypointIndex = 0; 
@@ -58,5 +58,12 @@ public class EnemyMovement : MonoBehaviour
         Vector3 targetPosition = waypoints[waypointIndex].position;
         agent.SetDestination(targetPosition);
         waypointIndex++;
+    }
+
+    
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 }
