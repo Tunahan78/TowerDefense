@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5642145405458780984}
   - component: {fileID: 5724229826871392380}
   - component: {fileID: 3085638028290246081}
+  - component: {fileID: 7558329322860241124}
   m_Layer: 0
   m_Name: Basic_Enemy
   m_TagString: Enemy
@@ -119,6 +120,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7558329322860241124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901984206246226959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0caf9706ee5ea6a449ba66b48845e986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  maxHealth: 50
+  physicalResistance: 0
 --- !u!1 &1253160173774111982
 GameObject:
   m_ObjectHideFlags: 0

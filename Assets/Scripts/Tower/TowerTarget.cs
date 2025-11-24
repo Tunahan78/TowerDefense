@@ -6,6 +6,8 @@ public class TowerTarget : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private HeadRotator headRotator;
 
+    private IUnitTarget currenttarget;
+
     private ITargetingStrategy currentStrategy;
 
     private void Start()
@@ -20,6 +22,7 @@ public class TowerTarget : MonoBehaviour
         
         // 2. Stratejiyi Uygulama
         IUnitTarget target = currentStrategy.SelectTarget(transform.position, targetsInRange);
+        currenttarget = target;
 
         // 3. HeadRotator'e Bildirme
         if (target != null)
@@ -60,5 +63,10 @@ public class TowerTarget : MonoBehaviour
         // 2. Kule pozisyonundan (Transform.position) attackRange yarıçapında bir tel küre çizdirme.
         // Bu, kule menzilini gösterir.
         Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
+    public IUnitTarget GetCurrentTarget()
+    {
+        return currenttarget;
     }
 }

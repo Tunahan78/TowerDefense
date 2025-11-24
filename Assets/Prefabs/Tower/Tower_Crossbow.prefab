@@ -123,6 +123,37 @@ Transform:
   - {fileID: 3141952891627289907}
   m_Father: {fileID: 772716946228881319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3848754857076067931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 937209699377462362}
+  m_Layer: 0
+  m_Name: TowerFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &937209699377462362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848754857076067931}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.001, y: 0.087, z: 0.489}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1762816352549842808}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4578438461641354991
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +377,7 @@ GameObject:
   - component: {fileID: 772716946228881319}
   - component: {fileID: 82185207313942385}
   - component: {fileID: 8370083894806891337}
+  - component: {fileID: 3183928260901211326}
   m_Layer: 0
   m_Name: Tower_Crossbow
   m_TagString: Untagged
@@ -398,6 +430,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerTarget
   attackRange: 3
   headRotator: {fileID: 82185207313942385}
+--- !u!114 &3183928260901211326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6829020744140889171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83569ae6ab3281c4bad76e4c007dab54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAttacker
+  towerTarget: {fileID: 8370083894806891337}
+  firePoint: {fileID: 937209699377462362}
+  attackRate: 1
+  baseDamage: 25
+  damageType: 0
+  arrowPrefab: {fileID: 1285199457247807813, guid: be9837bba0122fb40a50837025de013a, type: 3}
 --- !u!1 &6927009498506964214
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,12 +741,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9207583999003830600}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14784572, y: -0.8042764, z: 0.22445934, w: 0.52999926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.00017183303, y: 0.42612013, z: 0.00015135713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3736959174296179632}
+  - {fileID: 937209699377462362}
   m_Father: {fileID: 5314434548547578796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4736140373899914245
