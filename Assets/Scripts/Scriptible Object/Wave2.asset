@@ -15,8 +15,8 @@ MonoBehaviour:
   preWaveDelay: 10
   enemyGroups:
   - enemyPrefab: {fileID: 901984206246226959, guid: 14f53c80a9e91ce4b9d3b6d4355703e8, type: 3}
-    enemyCount: 5
+    enemyCount: 6
     spawnInterval: 3
   - enemyPrefab: {fileID: 1328862524349335488, guid: a21604b427d4d484e8fca969db46a2eb, type: 3}
-    enemyCount: 4
+    enemyCount: 6
     spawnInterval: 4

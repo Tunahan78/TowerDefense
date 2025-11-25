@@ -1190,9 +1190,25 @@ PrefabInstance:
       propertyPath: arrowPrefab
       value: 
       objectReference: {fileID: 1285199457247807813, guid: be9837bba0122fb40a50837025de013a, type: 3}
+    - target: {fileID: 3183928260901211326, guid: c0cf327fb8a50e94c8c16d101d70cb84, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 6829020744140889171, guid: c0cf327fb8a50e94c8c16d101d70cb84, type: 3}
       propertyPath: m_Name
       value: Tower_Crossbow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980926869465098793, guid: c0cf327fb8a50e94c8c16d101d70cb84, type: 3}
+      propertyPath: emissionPropertyName
+      value: _EmissionColor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655480668757059019, guid: c0cf327fb8a50e94c8c16d101d70cb84, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655480668757059019, guid: c0cf327fb8a50e94c8c16d101d70cb84, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.020833334
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2631,7 +2647,7 @@ Transform:
   m_GameObject: {fileID: 1571574180}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.51, y: 0, z: -5.359}
+  m_LocalPosition: {x: 8.512, y: 0, z: -5.42}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4617,7 +4633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6456196271502384917, guid: 891cbd24ad6405e4cbe39bd2acdbe3e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6456196271502384917, guid: 891cbd24ad6405e4cbe39bd2acdbe3e3, type: 3}
       propertyPath: m_LocalPosition.z
