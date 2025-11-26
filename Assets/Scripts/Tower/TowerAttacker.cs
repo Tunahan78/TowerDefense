@@ -1,83 +1,93 @@
-using System;
 using UnityEngine;
+
 
 public class TowerAttacker : MonoBehaviour
 {
+    // Bağımlılıklar: Artık veriye değil, SO'ya ve diğer Komponentlere bağımlıyız.
+    [Header("Core Dependencies")]
+    [SerializeField] private TowerDataSO towerData; // Tek SO referansımız
     [SerializeField] private TowerTarget towerTarget;
     [SerializeField] private Transform firePoint;
 
-    [Header("Attack Settings")]
-    [SerializeField] private float attackRate = 1f; // saniyede atış
-
-    // Kulemizin hasar verisini Scriptable Object'ten almalıyız, ancak şimdilik manuel tanımlayalım.
-    [Header("Tower Data (Placeholder)")]
-    [SerializeField] private float baseDamage = 25f;
-    [SerializeField] private DamageType damageType = DamageType.Physical;
-     // [SerializeField] private GameObject arrowPrefab; // Arbalet Mermisi Prefab'ı
-    [SerializeField] private BeamVFXController beamVFXController; // Işın Controlcüsü
+    [Header("VFX Dependencies")]
+    [SerializeField] private ChargeVFXController chargeVFXController;
+    [SerializeField] private BeamVFXController beamVFXController;
     [SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] private LayerMask layerMask;
     
-    [Header("VFX Settings")]
-    [SerializeField] private ChargeVFXController chargeVFXController; // Şarj VFX Kontrolcüsü
-
     
-
-
     private float attackCooldown = 0f;
-
     private IAttackBehavior currentAttackBehavior;
 
     private void Start()
     {
-        // Örn: Başlangıçta Arbalet davranışını atıyoruz.
-        // IAttackBehavior somut sınıfının başlatılması için gereken tüm veriyi sağlamalıyız.
-        currentAttackBehavior = new BeamAttackBehavior(firePoint, lineRenderer, layerMask);
+        if (towerData == null)
+        {
+            Debug.LogError("Tower Data SO is missing on " + gameObject.name, this);
+            enabled = false;
+            return;
+        }
 
-        attackCooldown = 1f / attackRate;
+        // 1. Statik Veriyi SO'dan Yükle
+        towerTarget.SetRange(towerData.attackRange); // TargetingComponent menzili SO'dan alır
+        attackCooldown = 1f / towerData.attackRate;
+
+        // 2. Saldırı Davranışını Factory ile Enjekte Et (DIP/Strategy Pattern)
+        // Factory, SO'daki behaviorType'a göre doğru sınıfı yaratır.
+        currentAttackBehavior = TowerFactoryBehavior.CreateAttackBehavior(
+            towerData, 
+            firePoint, 
+            lineRenderer, 
+            beamVFXController // BeamVFXController, Beam davranışına enjekte edilir
+        );
     }
 
     private void Update()
     {
+        // 1. Cooldown Yönetimi
         attackCooldown -= Time.deltaTime;
+        
+        // 2. Hedefi TargetingComponent'ten al
         IUnitTarget target = towerTarget.GetCurrentTarget();
 
-        float maxCooldown = 1f / attackRate;
+        // 3. Şarj Görsel Efektini Güncelle
+        float maxCooldown = 1f / towerData.attackRate;
         if (chargeVFXController != null)
-        {  
-           chargeVFXController.UpdateCharge(attackCooldown, maxCooldown);
+        { 
+            chargeVFXController.UpdateCharge(attackCooldown, maxCooldown);
         }
-
         
+        // 4. Atış Kontrolü
         if(attackCooldown <= 0f && target != null)
         {
             ExecuteAttack(target);
-            attackCooldown = 1f / attackRate;
+            attackCooldown = maxCooldown;
 
-            // 5. Atıştan Sonra Görsel Efekti Sıfırla (YENİ EKLENTİ)
+            // 5. Atıştan Sonra Görsel Efekti Sıfırla
             if (chargeVFXController != null)
             {
-               chargeVFXController.ResetCharge();
+                chargeVFXController.ResetCharge();
             }
         } 
     }
 
     private void ExecuteAttack(IUnitTarget target)
     {
-
+        // 1. Hasar Bilgisini Oluştur (SO verisine göre)
         DamageInfo damageInfo = new DamageInfo 
         { 
-        DamageAmount = baseDamage, 
-        DamageType = damageType 
+            DamageAmount = towerData.baseDamage, 
+            DamageType = towerData.damageType 
         };
 
-        currentAttackBehavior.Attack(target,damageInfo);
+        // 2. Saldırı Davranışını Tetikle (IAttackBehavior'a devret)
+        currentAttackBehavior.Attack(target, damageInfo);
 
-        if(beamVFXController != null)
+        // 3. Işın Görsel Efektini Başlat (Sadece Işın Kulelerinde anlamlıdır)
+        // Bu, BeamAttackBehavior içinde de yapılabilir, ancak hızlı ışınlar için burada tutmak da yaygındır.
+        if (beamVFXController != null)
         {
-           beamVFXController.EnableBeamForDuration(0.05f); 
+            beamVFXController.EnableBeamForDuration(0.05f); // Kısa bir süre görünür yap
         }
     }
-
 }
 

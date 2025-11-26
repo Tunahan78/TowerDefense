@@ -13,16 +13,24 @@ public class HeadRotator : MonoBehaviour
     }
 
     private void Update()
+{
+    // 1. Hedefin null olup olmadığını kontrol et (Zaten mevcut)
+    if (currentTarget == null)
     {
-        
-        if (currentTarget == null)
-        {
-            return;
-        }
-
-        // Hedefe bakma ve yumuşak dönüşü uygulama
-        FaceTarget(currentTarget.position);
+        return;
     }
+    
+    // YENİ KONTROL: Hedefin hala sahnede var olup olmadığını kontrol et
+    // Bu kontrol, özellikle düşman yok edildiği anda kritik önem taşır.
+    if (currentTarget.gameObject.activeInHierarchy == false) 
+    {
+        currentTarget = null;
+        return;
+    }
+
+    // Hedefe bakma ve yumuşak dönüşü uygulama
+    FaceTarget(currentTarget.position);
+}
 
     private void FaceTarget(Vector3 targetPosition)
     {

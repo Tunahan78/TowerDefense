@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ClosestTargetStrategy : ITargetingStrategy
 {
-    public IUnitTarget SelectTarget(Vector3 towerPosition, List<IUnitTarget> potentialTargets)
+    public IUnitTarget SelectTarget(Vector3 towerPosition, List<IUnitTarget> potentialTargets, IUnitTarget currentLockedTarget)
     {
         // Liste boşsa null döner
         if(potentialTargets == null || potentialTargets.Count == 0)

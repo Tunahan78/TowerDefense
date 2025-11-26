@@ -647,17 +647,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83569ae6ab3281c4bad76e4c007dab54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttacker
+  towerData: {fileID: 11400000, guid: 951e4b70bfcba944c99bb3dc405b2e83, type: 2}
   towerTarget: {fileID: 8370083894806891337}
   firePoint: {fileID: 937209699377462362}
-  attackRate: 1
-  baseDamage: 25
-  damageType: 0
+  chargeVFXController: {fileID: 6980926869465098793}
   beamVFXController: {fileID: 2924824168360166476}
   lineRenderer: {fileID: 8655480668757059019}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  chargeVFXController: {fileID: 6980926869465098793}
 --- !u!1 &6927009498506964214
 GameObject:
   m_ObjectHideFlags: 0

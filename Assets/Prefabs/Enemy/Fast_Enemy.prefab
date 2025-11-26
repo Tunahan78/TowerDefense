@@ -105,7 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2cb0b64c8d86b4a980127f08ed8b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  enemyData: {fileID: 11400000, guid: 5ceb506427b1f3040b99b8493097e8dd, type: 2}
   waypoints: []
+  pathOffset: 0.4
 --- !u!65 &5566640373830864299
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -166,8 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caf9706ee5ea6a449ba66b48845e986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  maxHealth: 25
-  physicalResistance: 0
+  enemyData: {fileID: 11400000, guid: 5ceb506427b1f3040b99b8493097e8dd, type: 2}
 --- !u!1 &1522390669159409156
 GameObject:
   m_ObjectHideFlags: 0

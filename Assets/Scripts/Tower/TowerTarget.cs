@@ -12,7 +12,7 @@ public class TowerTarget : MonoBehaviour
 
     private void Start()
     {
-        currentStrategy = new ClosestTargetStrategy();
+        currentStrategy = new AdvancedTargetingStrategy();
     }
 
     private void Update()
@@ -21,12 +21,13 @@ public class TowerTarget : MonoBehaviour
         List<IUnitTarget> targetsInRange = FindTargetsInRange();
         
         // 2. Stratejiyi Uygulama
-        IUnitTarget target = currentStrategy.SelectTarget(transform.position, targetsInRange);
+        IUnitTarget target = currentStrategy.SelectTarget(transform.position, targetsInRange,currenttarget);
         currenttarget = target;
 
         // 3. HeadRotator'e Bildirme
         if (target != null)
         {
+            currenttarget =target;
             headRotator.SetTarget(target.GetTransform());
         }
         else
@@ -68,5 +69,10 @@ public class TowerTarget : MonoBehaviour
     public IUnitTarget GetCurrentTarget()
     {
         return currenttarget;
+    }
+
+    public void SetRange(float newRange)
+    {
+        attackRange = newRange;
     }
 }

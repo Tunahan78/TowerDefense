@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class HealthComponent : MonoBehaviour , IDamageable
+public class HealthComponent : MonoBehaviour , IDamageable , IThreatLevel
 {
-    [Header("Health Settings")]
-    [SerializeField] private float maxHealth;
-    private float currentHealth;
-    [Header("Resistance Settings (Yüzde olarak)")]
-    // Kulelerin Fiziksel hasarını ne kadar keseceğimizi belirler
-    [SerializeField, Range(0f, 1f)] private float physicalResistance = 0f; 
+    [Header("Data")]
+    [SerializeField] private EnemyDataSO enemyData;
     // Diğer hasar türleri için dirençler eklenebilir
     // [SerializeField, Range(0f, 1f)] private float fireResistance = 0f;
+
+    private float currentHealth;
  
     private bool isAlive => currentHealth > 0;
 
@@ -17,7 +15,14 @@ public class HealthComponent : MonoBehaviour , IDamageable
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        if (enemyData == null) 
+        {
+            Debug.LogError("EnemyData SO is missing!", this);
+            enabled = false;
+            return;
+        }
+        // Max Health değerini SO'dan okuyarak başlat
+        currentHealth = enemyData.maxHealth;
     }
 
     public void TakeDamage(DamageInfo damage)
@@ -30,7 +35,7 @@ public class HealthComponent : MonoBehaviour , IDamageable
         if (damage.DamageType == DamageType.Physical)
         {
             // EffectiveDamage = BaseDamage * (1 - Direnç Yüzdesi)
-            effectiveDamage *= (1f - physicalResistance); 
+            effectiveDamage *= (1f - enemyData.physicalResistance); 
         }
         // else if (damage.DamageType == DamageType.Fire) { ... }
 
@@ -59,6 +64,13 @@ public class HealthComponent : MonoBehaviour , IDamageable
         // Bu noktada WaveManager'a düşmanın öldüğünü bildirmeliyiz.
     }
 
-    
+    public float GetThreatScore()
+    {
+        if (enemyData == null) return 0f;
+
+    // Tehdit Skoru: Max Can (Tehlike Potansiyeli) * SO'daki Tehdit Çarpanı
+       // Bu, aynı mesafedeki düşmanlar için daha sağlam (yüksek can/zırh) olanı seçer.
+       return enemyData.maxHealth * enemyData.threatMultiplier;
+    } 
 
 }

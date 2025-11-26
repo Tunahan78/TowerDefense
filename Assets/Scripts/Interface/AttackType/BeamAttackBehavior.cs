@@ -5,12 +5,14 @@ public class BeamAttackBehavior : IAttackBehavior
     private Transform firePoint;
     private LineRenderer lineRenderer;
     private LayerMask enemyLayer; // Raycast için düşmanların layer'ı
+    private BeamVFXController beamVFXController;
 
     // Constructor'a ekleme: EnemyLayer'ı da alalım.
-    public BeamAttackBehavior(Transform fp, LineRenderer lr, LayerMask el)
+    public BeamAttackBehavior(Transform fp, LineRenderer lr, BeamVFXController vfx , LayerMask el ) 
     {
         firePoint = fp;
         lineRenderer = lr;
+        beamVFXController = vfx;
         enemyLayer = el; // Enemy layer'ını Inspector'dan atayacağız
         lineRenderer.enabled = false;
     }
