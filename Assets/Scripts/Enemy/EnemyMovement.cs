@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour , IUnitTarget , IPathProgress
 {
+   [Header("Test")]
+   [SerializeField] private float debugPathScore;
 
    [Header("Data")]
    [SerializeField] private EnemyDataSO enemyData;
@@ -11,6 +13,9 @@ public class EnemyMovement : MonoBehaviour , IUnitTarget , IPathProgress
 
    [Header("Pathing")]
    [SerializeField] private float pathOffset; 
+
+   [Header("Target Positon")]
+   [SerializeField] private Transform targetPosition;
    private int waypointIndex = 0; 
    private NavMeshAgent agent;
    private float rotationSpeed = 10f;
@@ -100,7 +105,7 @@ public class EnemyMovement : MonoBehaviour , IUnitTarget , IPathProgress
 
     public Transform GetTransform()
     {
-        return transform;
+        return targetPosition;
     }
 
     private void OnDrawGizmosSelected()
@@ -157,10 +162,15 @@ public class EnemyMovement : MonoBehaviour , IUnitTarget , IPathProgress
 
     public float GetPathProgressScore()
     {
-        return PathProgressCalculator.CalculateScore(
+        float score = PathProgressCalculator.CalculateScore(
             agent, 
             waypoints, 
             waypointIndex);
+
+            // SCORE'U INSPECTOR'DA GÖSTER
+        debugPathScore = score; 
+
+        return score;
     }
 
     public GameObject GetGameObject()

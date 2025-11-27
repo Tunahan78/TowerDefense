@@ -21,15 +21,24 @@ public class BeamAttackBehavior : IAttackBehavior
     {
         if (target == null || target.GetTransform() == null) return;
         
+        // Görsel hedef yükseltilmiş pivot
         Transform targetTransform = target.GetTransform();
+        // mekanik hedef kök pivot
+        GameObject rootGameObject = target.GetGameObject();
 
         // Hasarı anında uygula
-        if (targetTransform.TryGetComponent<IDamageable>(out IDamageable damageable))
+        if (rootGameObject.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
-            damageable.TakeDamage(damage); 
+        
+         damageable.TakeDamage(damage); 
+        } 
+        else
+        {
+         Debug.LogError($"IDamageable arayüzü {rootGameObject.name} üzerinde bulunamadı!");
         }
 
-        // Raycast ile çarpan noktayı bul
+
+        // Raycast ile çarpan noktayı bul burada yükselilmiş pivota vurmasını sağlıyoruz 
         DrawBeamWithRaycast(targetTransform); 
     }
 

@@ -7,6 +7,7 @@ public class TowerAttacker : MonoBehaviour
     [Header("Core Dependencies")]
     [SerializeField] private TowerDataSO towerData; // Tek SO referansımız
     [SerializeField] private TowerTarget towerTarget;
+    [SerializeField] private HeadRotator headRotator;
     [SerializeField] private Transform firePoint;
 
     [Header("VFX Dependencies")]
@@ -57,7 +58,7 @@ public class TowerAttacker : MonoBehaviour
         }
         
         // 4. Atış Kontrolü
-        if(attackCooldown <= 0f && target != null)
+        if(attackCooldown <= 0f && target != null && headRotator.IsFaceingTarget())
         {
             ExecuteAttack(target);
             attackCooldown = maxCooldown;

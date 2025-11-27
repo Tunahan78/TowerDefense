@@ -649,6 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttacker
   towerData: {fileID: 11400000, guid: 951e4b70bfcba944c99bb3dc405b2e83, type: 2}
   towerTarget: {fileID: 8370083894806891337}
+  headRotator: {fileID: 82185207313942385}
   firePoint: {fileID: 937209699377462362}
   chargeVFXController: {fileID: 6980926869465098793}
   beamVFXController: {fileID: 2924824168360166476}

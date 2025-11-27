@@ -15,6 +15,6 @@ MonoBehaviour:
   enemeyName: Fast_Enemy
   maxHealth: 25
   baseMovementSpeed: 3
-  threatMultiplier: 6
+  threatMultiplier: 4
   physicalResistance: 0
   killReward: 10

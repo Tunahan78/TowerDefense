@@ -4,7 +4,7 @@ using UnityEngine;
 public class AdvancedTargetingStrategy : ITargetingStrategy
 {
     // Yol ilerleme skoru tehtidin önüne geömesi için yüksek değer veriyoruz
-    private const float STABILITY_BONUS = 500f;
+    private const float STABILITY_BONUS = 5f;
     private const float PRIORITY_MULTIPLIER = 1000f;
     public IUnitTarget SelectTarget(Vector3 towerPosition, List<IUnitTarget> potentialTargets , IUnitTarget currentLockedTarget)
     {

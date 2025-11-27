@@ -5,6 +5,7 @@ public class HeadRotator : MonoBehaviour
     [SerializeField] private Transform towerHead; 
     [SerializeField] private float rotationSpeed ; 
     
+    private int rotationTolerance = 2; // Kaç derecelik açı farkıyla hazır sayılacak
     private Transform currentTarget; 
 
     public void SetTarget(Transform newTarget)
@@ -50,5 +51,17 @@ public class HeadRotator : MonoBehaviour
                 Time.deltaTime * rotationSpeed
             );
         }
+    }
+
+    public bool IsFaceingTarget()
+    {
+        if(currentTarget == null)
+        {
+            return false;
+        }
+        Vector3 diractionToTarget = (currentTarget.position - towerHead.position).normalized;
+
+        float angel = Vector3.Angle(towerHead.forward, diractionToTarget);
+        return angel <= rotationTolerance;
     }
 }
