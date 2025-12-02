@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4925977120248492272}
+  - component: {fileID: 6071118370460170075}
   - component: {fileID: 2549510315630285445}
   - component: {fileID: 7681603806327373605}
   - component: {fileID: 3157349624556787012}
-  - component: {fileID: 6071118370460170075}
   m_Layer: 6
   m_Name: Yol
   m_TagString: Untagged
@@ -35,6 +35,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6071118370460170075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7411150327856805440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b573db6f8d84a33468d5ed18472ef128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileSlot
 --- !u!33 &2549510315630285445
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -112,15 +124,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6071118370460170075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7411150327856805440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b573db6f8d84a33468d5ed18472ef128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TileSlot

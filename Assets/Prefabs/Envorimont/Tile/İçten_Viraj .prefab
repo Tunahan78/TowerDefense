@@ -121,10 +121,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1115130741900166861}
+  - component: {fileID: 2924146347452983637}
   - component: {fileID: 2800877710876972471}
   - component: {fileID: 8860474438113050291}
   - component: {fileID: 5917304201371109128}
-  - component: {fileID: 2924146347452983637}
   m_Layer: 0
   m_Name: "\u0130\xE7ten_Viraj "
   m_TagString: Untagged
@@ -148,6 +148,18 @@ Transform:
   - {fileID: 5228499582324923445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &2924146347452983637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752123689341751115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b573db6f8d84a33468d5ed18472ef128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileSlot
 --- !u!33 &2800877710876972471
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -226,15 +238,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6920570469935848300, guid: e4f015fced1635b4faf93701b2d56f47, type: 3}
---- !u!114 &2924146347452983637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7752123689341751115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b573db6f8d84a33468d5ed18472ef128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TileSlot

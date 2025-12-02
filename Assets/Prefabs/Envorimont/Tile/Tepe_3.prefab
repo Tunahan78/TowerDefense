@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7078538002656334568}
+  - component: {fileID: 2788737916252112048}
   - component: {fileID: 2647733998872973058}
   - component: {fileID: 3212241225543156552}
   - component: {fileID: 5517721069012271323}
-  - component: {fileID: 2788737916252112048}
   m_Layer: 6
   m_Name: Tepe_3
   m_TagString: Untagged
@@ -35,6 +35,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2788737916252112048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6514152630183694297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b573db6f8d84a33468d5ed18472ef128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileSlot
 --- !u!33 &2647733998872973058
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -113,15 +125,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2835245020478433565, guid: e4f015fced1635b4faf93701b2d56f47, type: 3}
---- !u!114 &2788737916252112048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6514152630183694297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b573db6f8d84a33468d5ed18472ef128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TileSlot

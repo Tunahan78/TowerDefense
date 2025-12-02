@@ -5,13 +5,11 @@ using UnityEngine.AI;
 
 public static class PathProgressCalculator
 {
-    /// <summary>
-    /// Düşmanın yolun sonuna kalan gerçek mesafesini hesaplar ve bunun tersini döndürür (Yüksek skor = Yakın).
-    /// </summary>
+    
     /// <param name="agent">Düşmanın NavMeshAgent bileşeni.</param>
     /// <param name="waypoints">Tüm Waypoint noktaları.</param>
     /// <param name="waypointIndex">Düşmanın hedeflediği bir sonraki Waypoint'in indeksi.</param>
-    /// <returns>Bitişe yakınlığı temsil eden puan. (1.0f / Kalan Mesafe)</returns>
+
     public static float CalculateScore(NavMeshAgent agent, Transform[] waypoints, int waypointIndex)
     {
         // Temel Kontrol: Ajanın varlığı ve Waypoint dizisinin geçerliliği.

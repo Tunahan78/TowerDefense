@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1155899286725000393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2217541112217058}
+  - component: {fileID: 4803266886580745696}
+  - component: {fileID: 7472869736833678807}
+  - component: {fileID: 8987442269129837834}
+  m_Layer: 0
+  m_Name: GridBuilder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2217541112217058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155899286725000393}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4803266886580745696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155899286725000393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0299de178caf20d4996e30e2481bc1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileSetHolder
+  yol: {fileID: 7411150327856805440, guid: e4d17710993b8ff41932abd9b8f0d77a, type: 3}
+  "kald\u0131r\u0131m": {fileID: 6722837006067743196, guid: 81933f76b44f44b46a01c63b8c13f0dd, type: 3}
+  "yar\u0131mYol": {fileID: 4166984938003523954, guid: 6e203ae648f536a40bfb5dead05371e5, type: 3}
+  "d\u0131\u015FtanViraj": {fileID: 3057108709250629310, guid: 9e63cda2f46c6ed4fad1f3b46e4c4896, type: 3}
+  "i\xE7tenViraj": {fileID: 7752123689341751115, guid: bb3ce4ee9513ba34f9854b2465ba48ed, type: 3}
+  tepe_1: {fileID: 7028490420569550155, guid: f8fbee38a5cc4274899204b585214574, type: 3}
+  tepe_2: {fileID: 2864220617589219789, guid: f42cce62999b6bc4fb938a25ed1ca2e4, type: 3}
+  tepe_3: {fileID: 6514152630183694297, guid: 7505ae0a4172d8c43819ab09a72d705f, type: 3}
+  "kald\u0131r\u0131m_k\xF6pr\xFC": {fileID: 3241274388262432931, guid: 530b618e9571ccf449c81f181536ce14, type: 3}
+  "yol_k\xF6pr\xFC": {fileID: 1990099242029275298, guid: bccdeb564e6d979468edfddc0498d121, type: 3}
+  "yar\u0131mYol_k\xF6pr\xFC": {fileID: 1868432394093185632, guid: a8276d83bb3ae5c4aa86b3985b8abe4c, type: 3}
+--- !u!114 &7472869736833678807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155899286725000393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cc7d22c2b549d48ac87f7df507196b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridCreator
+  mainTile: {fileID: 6722837006067743196, guid: 81933f76b44f44b46a01c63b8c13f0dd, type: 3}
+  "IzgaraUzunlu\u011Fu": 2
+  "IzgaraGeni\u015Fli\u011Fi": 10
+  createdTiles: []
+--- !u!114 &8987442269129837834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155899286725000393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.05
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
