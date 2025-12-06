@@ -9,10 +9,15 @@ public class EnemyMovement : MonoBehaviour , IUnitTarget , IPathProgress
 
    [Header("Data")]
    [SerializeField] private EnemyDataSO enemyData;
-   [SerializeField] private Transform[] waypoints;
+   private Transform[] waypoints;
+
+   private EnemyPortal originPortal;
 
    [Header("Pathing")]
    [SerializeField] private float pathOffset; 
+   [SerializeField] private float randomOffsetRadius = 0.5f;
+
+   private Vector3 batchOffset;
 
    [Header("Target Positon")]
    [SerializeField] private Transform targetPosition;
@@ -30,6 +35,14 @@ public class EnemyMovement : MonoBehaviour , IUnitTarget , IPathProgress
 
         agent.updateRotation = false;
         agent.avoidancePriority = Mathf.RoundToInt(agent.speed * 10);
+        // YENİ MANTIK: Düşman spawnlanır spawnlanmaz kendisine rastgele bir kayma atar.
+        // XZ düzleminde (Y=0) random bir vektör yarat.
+          batchOffset = new Vector3(Random.Range(-randomOffsetRadius, randomOffsetRadius), 0f, Random.Range(-randomOffsetRadius, randomOffsetRadius));
+    }
+
+    public void Initialize(EnemyPortal portal) 
+    {
+        originPortal = portal;
     }
 
     private void Start()
@@ -41,13 +54,23 @@ public class EnemyMovement : MonoBehaviour , IUnitTarget , IPathProgress
             return;
         }
         agent.speed = enemyData.baseMovementSpeed;
-        if(waypoints.Length > 0)
+        
+        // KRİTİK: Yolu WaypointManager'dan dinamik olarak al (ÖNCE YAPILMALI)
+        if(WaypointManager.Instance != null && originPortal != null)
         {
-            SetNextDestination();
+            waypoints = WaypointManager.Instance.GetPathForPortal(originPortal);
         }
-        if(WaypointManager.Instance != null)
+        else
         {
-            waypoints = WaypointManager.Instance.GetWaypoints();
+            Debug.LogError($"Enemy {gameObject.name}: WaypointManager veya OriginPortal atanmamış. Yol yüklenemedi.", this);
+            enabled = false;
+            return;
+        }
+
+        // Yolu yükledikten sonra Waypoints dizisinin geçerliliğini kontrol et.
+        if(waypoints != null && waypoints.Length > 0)
+        {
+            SetNextDestination(); // Artık güvenli!
         }
     }
     private void Update()
@@ -93,10 +116,11 @@ public class EnemyMovement : MonoBehaviour , IUnitTarget , IPathProgress
 
             Vector3 direction = (targetPosition- startPosition).normalized;
             Vector3 perpendicular = new Vector3(-direction.z, 0, direction.x);
-
+            // farklı türden düşmanların aynı hizada yığılmasını önlemek için offset kullanıyoruz 
             targetPosition += perpendicular * pathOffset;
         }
-
+        // Burda ekstra bir offset ekleyerek aynı türden düşmanların yığılmasını önlemeye çalışıyoruz 
+        targetPosition += batchOffset;
         agent.SetDestination(targetPosition);
         waypointIndex++;
     }
