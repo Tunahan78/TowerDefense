@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 307561585930619872}
   - component: {fileID: 3185879885893891261}
   - component: {fileID: 5642145405458780984}
+  - component: {fileID: 4852766911615850546}
   - component: {fileID: 5724229826871392380}
   - component: {fileID: 3085638028290246081}
   - component: {fileID: 7558329322860241124}
@@ -74,9 +75,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   debugPathScore: 0
   enemyData: {fileID: 11400000, guid: 739f12c4ff0c01d4486906a8b8229034, type: 2}
-  waypoints: []
   pathOffset: 0
+  randomOffsetRadius: 0.5
   targetPosition: {fileID: 2146789480017308683}
+--- !u!114 &4852766911615850546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901984206246226959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e36f04c9252b8a4db8366323ca5735e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Visual
+  visual: {fileID: 3455795464940140760}
+  rotationSpeed: 5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!65 &5724229826871392380
 BoxCollider:
   m_ObjectHideFlags: 0
